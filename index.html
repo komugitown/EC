@@ -20,6 +20,7 @@
 
     header {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 15px;
       margin-bottom: 30px;
@@ -51,7 +52,7 @@
 
     .products {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
@@ -70,7 +71,7 @@
     .product img {
       width: 100%;
       aspect-ratio: 1;
-      object-fit: contain;
+      object-fit: cover;
       animation: breathe 2s infinite;
     }
 
@@ -84,7 +85,7 @@
       padding: 15px;
     }
 
-    button {
+    .product-info button {
       width: 100%;
       padding: 10px;
       border: none;
@@ -95,7 +96,7 @@
       margin-top: 10px;
     }
 
-    button:hover {
+    .product-info button:hover {
       opacity: 0.8;
     }
 
@@ -107,7 +108,7 @@
 
   <!-- Header -->
   <header>
-    <img src="title.png">
+    <img src="title.png" alt="YO MACHO Logo">
     <div>
       <h1>Welcome, official YO MACHO!!</h1>
       <div>筋肉が膨らむブランドへようこそ</div>
@@ -153,34 +154,42 @@
   <h2>Products</h2>
 
   <div class="products">
-
     <!-- JSで自動生成 -->
   </div>
 
 </div>
 
 <script>
-
 const container = document.querySelector(".products");
+const amazonLinks = [
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_1",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_2",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_3",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_4",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_5",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_6",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_7",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_8",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_9",
+  "https://www.amazon.co.jp/dp/PRODUCT_CODE_10"
+];
 
 for (let i = 1; i <= 10; i++) {
-
   const product = document.createElement("div");
   product.className = "product";
 
   product.innerHTML = `
-    <img src="image_${i}.png">
+    <img src="image_${i}.png" alt="YO MACHO Item ${i}">
     <div class="product-info">
       <b>YO MACHO Item ${i}</b><br>
       ¥${i * 1200}
-      <button>Add to Cart</button>
+      <a href="${amazonLinks[i-1]}" target="_blank">
+        <button>Buy on Amazon</button>
+      </a>
     </div>
   `;
-
   container.appendChild(product);
-
 }
-
 </script>
 
 </body>
