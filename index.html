@@ -9,7 +9,8 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #ffe4ec, #fff6cc);
+      background: radial-gradient(circle at top left, #1a1a1a, #000000 70%);
+      color: white;
       padding: 20px;
     }
 
@@ -43,7 +44,7 @@
     }
 
     .card {
-      background: white;
+      background: #1f1f1f;
       padding: 20px;
       border-radius: 15px;
       margin-bottom: 25px;
@@ -57,7 +58,7 @@
     }
 
     .product {
-      background: white;
+      background: #1f1f1f;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -94,6 +95,7 @@
       color: white;
       cursor: pointer;
       margin-top: 10px;
+      font-weight: bold;
     }
 
     .product-info button:hover {
@@ -153,28 +155,28 @@
   <!-- Products -->
   <h2>Products</h2>
 
-  <div class="products">
-    <!-- JSで自動生成 -->
-  </div>
+  <div class="products"></div>
 
 </div>
 
 <script>
 const container = document.querySelector(".products");
+
 const amazonLinks = [
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_1",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_2",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_3",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_4",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_5",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_6",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_7",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_8",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_9",
-  "https://www.amazon.co.jp/dp/PRODUCT_CODE_10"
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp",
+  "https://www.amazon.co.jp"
 ];
 
 for (let i = 1; i <= 10; i++) {
+
   const product = document.createElement("div");
   product.className = "product";
 
@@ -188,6 +190,7 @@ for (let i = 1; i <= 10; i++) {
       </a>
     </div>
   `;
+
   container.appendChild(product);
 }
 </script>
