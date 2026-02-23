@@ -312,56 +312,30 @@ productContainer.innerHTML = ""; // ←重要：リセット
 products.forEach(product => {
 
   const item = document.createElement("div");
-  item.className = "product";
 
-  // SOLD OUTラベル
-  if(product.soldout){
-    const label = document.createElement("div");
-    label.className = "soldout-label";
-    label.innerText = "SOLD OUT";
-    item.appendChild(label);
-  }
+  // soldoutなら最初からクラス付ける
+  item.className = product.soldout ? "product soldout" : "product";
 
-  // 画像
-  const img = document.createElement("img");
-  img.src = product.image;
-  item.appendChild(img);
+  // innerHTMLで一括生成（確実）
+  item.innerHTML = `
+    ${product.soldout ? `<div class="soldout-label">SOLD OUT</div>` : ""}
 
-  // info
-  const info = document.createElement("div");
-  info.className = "product-info";
+    <img src="${product.image}" alt="${product.name}">
 
-  info.innerHTML = `
-    <b>${product.name}</b><br>
-    ¥${product.price.toLocaleString()}
+    <div class="product-info">
+      <b>${product.name}</b><br>
+      ¥${product.price.toLocaleString()}
+
+      ${
+        product.soldout
+        ? `<button disabled>SOLD OUT</button>`
+        : `<a href="${product.link}" target="_blank">
+            <button>Buy on Amazon</button>
+           </a>`
+      }
+    </div>
   `;
 
-  // ボタン
-  if(product.soldout){
-
-    item.classList.add("soldout");
-
-    const label = document.createElement("div");
-    label.className = "soldout-label";
-    label.innerText = "SOLD OUT";
-
-    item.appendChild(label);
-
-  }else{
-
-    const link = document.createElement("a");
-    link.href = product.link;
-    link.target = "_blank";
-
-    const btn = document.createElement("button");
-    btn.innerText = "Buy on Amazon";
-
-    link.appendChild(btn);
-    info.appendChild(link);
-
-  }
-
-  item.appendChild(info);
   productContainer.appendChild(item);
 
 });
