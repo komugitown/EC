@@ -201,16 +201,38 @@ for (let i = 1; i <= 10; i++) {
   const product = document.createElement("div");
   product.className = "product";
 
-  product.innerHTML = `
-    <img src="image_${i}.png" alt="YO MACHO Item ${i}">
+const products = [
+  { name: "YO MACHO Pigeon Tee", price: 5200, image: "image_1.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Iron Hoodie", price: 8200, image: "image_2.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Street Tank", price: 4600, image: "image_3.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Power Cap", price: 3500, image: "image_4.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Gym Shorts", price: 5900, image: "image_5.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Lift Socks", price: 1800, image: "image_6.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Pump Bottle", price: 2400, image: "image_7.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Beast Bag", price: 9800, image: "image_8.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Bulk Jacket", price: 12800, image: "image_9.png", link: "https://www.amazon.co.jp" },
+  { name: "YO MACHO Limited Black Tee", price: 6800, image: "image_10.png", link: "https://www.amazon.co.jp" }
+];
+
+const container = document.querySelector(".products");
+
+products.forEach(product => {
+  const item = document.createElement("div");
+  item.className = "product";
+
+  item.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
     <div class="product-info">
-      <b>YO MACHO Item ${i}</b><br>
-      ¥${i * 1200}
-      <a href="${amazonLinks[i-1]}" target="_blank">
+      <b>${product.name}</b><br>
+      ¥${product.price.toLocaleString()}
+      <a href="${product.link}" target="_blank">
         <button>Buy on Amazon</button>
       </a>
     </div>
   `;
+
+  container.appendChild(item);
+});
 
   container.appendChild(product);
 }
