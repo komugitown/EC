@@ -10,15 +10,19 @@
 
 <style>
 
-/* ===== 基本 ===== */
-
+/* ===== 追加：POP用 ===== */
 :root{
   --accent:#4fd1c5;
 }
 
+/* ===== 基本 ===== */
+
 body{
   margin:0;
-  font-family:'M PLUS Rounded 1c',sans-serif;
+  font-family:'M PLUS Rounded 1c',
+    "Hiragino Maru Gothic ProN",
+    "ヒラギノ丸ゴ ProN",
+    sans-serif;
   background:linear-gradient(to bottom,#111 0%,#1a1a1a 40%,#222 70%,#2a2a2a 100%);
   color:white;
   padding:20px;
@@ -47,10 +51,6 @@ header img{
 h1{
   margin:0;
   font-size:28px;
-}
-
-h2{
-  font-weight:700;
 }
 
 /* ===== カード ===== */
@@ -98,7 +98,7 @@ h2{
   flex:1;
 }
 
-/* ===== 商品 ===== */
+/* ===== 商品グリッド ===== */
 
 .products{
   display:grid;
@@ -129,7 +129,7 @@ h2{
   padding:15px;
 }
 
-/* ボタン */
+/* ===== ボタン ===== */
 
 .product-info button{
   width:100%;
@@ -154,7 +154,7 @@ h2{
   cursor:not-allowed;
 }
 
-/* SOLD OUT */
+/* ===== SOLD OUT ===== */
 
 .soldout-label{
   position:absolute;
@@ -172,7 +172,7 @@ h2{
   opacity:0.5;
 }
 
-/* ===== スマホ ===== */
+/* ===== スマホ対応 ===== */
 
 @media(max-width:600px){
 
@@ -186,6 +186,9 @@ h2{
   }
 
   .character{
+    flex-direction:row;
+    text-align:left;
+    align-items:center;
     gap:15px;
   }
 
@@ -234,21 +237,77 @@ YO MACHOは努力に反応するブランド。<br>
 
 const characters=[
 
-{name:"IRON PIT",image:"character_1.png",description:"鋼の精神を持つピットブル。不屈のパワーの象徴。"},
-{name:"MUSCLE BIRD",image:"character_2.png",description:"胸筋が膨らむ伝説のハト。努力に反応してパンプアップ。"},
-{name:"RUNNING CHEETAH",image:"character_3.png",description:"瞬発力の化身。スピードの極限体。"},
-{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"}
+{
+name:"IRON PIT",
+image:"character_1.png",
+description:"鋼の精神を持つピットブル。不屈のパワーの象徴。"
+},
+
+{
+name:"MUSCLE BIRD",
+image:"character_2.png",
+description:"胸筋が膨らむ伝説のハト。努力に反応してパンプアップ。"
+},
+
+{
+name:"RUNNING CHEETAH",
+image:"character_3.png",
+description:"瞬発力の化身。スピードの極限体。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+},
+
+{
+name:"BULK BEAR",
+image:"character_4.png",
+description:"増量期の王者。プロテインを愛する森の支配者。"
+}
 
 ];
 
 const charContainer=document.querySelector(".characters");
 
 characters.forEach(char=>{
+
 const item=document.createElement("div");
 item.className="character";
 
 item.innerHTML=`
-<img src="${char.image}">
+<img src="${char.image}" alt="${char.name}" loading="lazy">
 <div class="character-info">
 <b>${char.name}</b><br>
 <span style="opacity:0.7;font-size:14px;">
@@ -258,27 +317,50 @@ ${char.description}
 `;
 
 charContainer.appendChild(item);
+
 });
+
 
 /* ===== 商品 ===== */
 
 const products=[
+
 {name:"YO MACHO Pigeon Tee",price:5200,image:"image_1.png",link:"#",soldout:false},
+
 {name:"YO MACHO Iron Hoodie",price:8200,image:"image_2.png",link:"#",soldout:true},
-{name:"YO MACHO Street Tank",price:4600,image:"image_3.png",link:"#",soldout:true}
+
+{name:"YO MACHO Street Tank",price:4600,image:"image_3.png",link:"#",soldout:true},
+
+{name:"YO MACHO Power Cap",price:3500,image:"image_4.png",link:"#",soldout:true},
+
+{name:"YO MACHO Gym Shorts",price:5900,image:"image_5.png",link:"#",soldout:true},
+
+{name:"YO MACHO Lift Socks",price:1800,image:"image_6.png",link:"#",soldout:true},
+
+{name:"YO MACHO Pump Bottle",price:2400,image:"image_7.png",link:"#",soldout:true},
+
+{name:"YO MACHO Beast Bag",price:9800,image:"image_8.png",link:"#",soldout:true},
+
+{name:"YO MACHO Bulk Jacket",price:12800,image:"image_9.png",link:"#",soldout:true},
+
+{name:"YO MACHO Limited Black Tee",price:6800,image:"image_10.png",link:"#",soldout:true}
+
 ];
 
 const productContainer = document.querySelector(".products");
 
+productContainer.innerHTML = "";
+
 products.forEach(product => {
 
   const item = document.createElement("div");
+
   item.className = product.soldout ? "product soldout" : "product";
 
   item.innerHTML = `
     ${product.soldout ? `<div class="soldout-label">SOLD OUT</div>` : ""}
 
-    <img src="${product.image}">
+    <img src="${product.image}" alt="${product.name}">
 
     <div class="product-info">
       <b>${product.name}</b><br>
@@ -288,7 +370,7 @@ products.forEach(product => {
         product.soldout
         ? `<button disabled>SOLD OUT</button>`
         : `<a href="${product.link}" target="_blank">
-            <button>Buy</button>
+            <button>Buy on Amazon</button>
            </a>`
       }
     </div>
