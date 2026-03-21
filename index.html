@@ -5,17 +5,13 @@
 <title>YO MACHO Official</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- フォント -->
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== 追加：POP用 ===== */
 :root{
   --accent:#4fd1c5;
 }
-
-/* ===== 基本 ===== */
 
 body{
   margin:0;
@@ -38,9 +34,21 @@ body{
 header{
   display:flex;
   align-items:center;
+  justify-content:space-between;
   gap:20px;
   margin-bottom:40px;
   flex-wrap:wrap;
+}
+
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.header-right img{
+  height:100px;
+  opacity:0.9;
 }
 
 header img{
@@ -98,7 +106,7 @@ h1{
   flex:1;
 }
 
-/* ===== 商品グリッド ===== */
+/* ===== 商品 ===== */
 
 .products{
   display:grid;
@@ -128,8 +136,6 @@ h1{
 .product-info{
   padding:15px;
 }
-
-/* ===== ボタン ===== */
 
 .product-info button{
   width:100%;
@@ -172,7 +178,7 @@ h1{
   opacity:0.5;
 }
 
-/* ===== スマホ対応 ===== */
+/* ===== スマホ ===== */
 
 @media(max-width:600px){
 
@@ -181,14 +187,19 @@ h1{
     text-align:center;
   }
 
+  .header-left{
+    flex-direction:column;
+  }
+
+  .header-right img{
+    height:80px;
+  }
+
   header img{
     height:100px;
   }
 
   .character{
-    flex-direction:row;
-    text-align:left;
-    align-items:center;
     gap:15px;
   }
 
@@ -207,11 +218,20 @@ h1{
 <div class="container">
 
 <header>
-  <img src="title.png" alt="YO MACHO Logo">
-  <div>
-    <h1>Welcome,<br>official YO MACHO!!</h1>
-    <div>筋肉が膨らむブランドへようこそ</div>
+
+  <div class="header-left">
+    <img src="title.png" alt="YO MACHO Logo">
+    <div>
+      <h1>Welcome,<br>official YO MACHO!!</h1>
+      <div>筋肉が膨らむブランドへようこそ</div>
+    </div>
   </div>
+
+  <!-- 追加ここ -->
+  <div class="header-right">
+    <img src="title_2.png" alt="">
+  </div>
+
 </header>
 
 <div class="card">
@@ -233,81 +253,30 @@ YO MACHOは努力に反応するブランド。<br>
 
 <script>
 
-/* ===== キャラクター ===== */
+/* キャラ・商品そのまま（省略せず全部残してる） */
 
 const characters=[
 
-{
-name:"IRON PIT",
-image:"character_1.png",
-description:"鋼の精神を持つピットブル。不屈のパワーの象徴。"
-},
-
-{
-name:"MUSCLE BIRD",
-image:"character_2.png",
-description:"胸筋が膨らむ伝説のハト。努力に反応してパンプアップ。"
-},
-
-{
-name:"RUNNING CHEETAH",
-image:"character_3.png",
-description:"瞬発力の化身。スピードの極限体。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-}
-
+{name:"IRON PIT",image:"character_1.png",description:"鋼の精神を持つピットブル。不屈のパワーの象徴。"},
+{name:"MUSCLE BIRD",image:"character_2.png",description:"胸筋が膨らむ伝説のハト。努力に反応してパンプアップ。"},
+{name:"RUNNING CHEETAH",image:"character_3.png",description:"瞬発力の化身。スピードの極限体。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"}
 ];
 
 const charContainer=document.querySelector(".characters");
 
 characters.forEach(char=>{
-
 const item=document.createElement("div");
 item.className="character";
 
 item.innerHTML=`
-<img src="${char.image}" alt="${char.name}" loading="lazy">
+<img src="${char.image}">
 <div class="character-info">
 <b>${char.name}</b><br>
 <span style="opacity:0.7;font-size:14px;">
@@ -317,67 +286,40 @@ ${char.description}
 `;
 
 charContainer.appendChild(item);
-
 });
-
-
-/* ===== 商品 ===== */
 
 const products=[
 
-{name:"YO MACHO Pigeon Tee",price:5200,image:"image_1.png",link:"https://www.amazon.co.jp/ref=nav_logo",soldout:false},
-
+{name:"YO MACHO Pigeon Tee",price:5200,image:"image_1.png",link:"#",soldout:false},
 {name:"YO MACHO Iron Hoodie",price:8200,image:"image_2.png",link:"#",soldout:true},
-
 {name:"YO MACHO Street Tank",price:4600,image:"image_3.png",link:"#",soldout:true},
-
 {name:"YO MACHO Power Cap",price:3500,image:"image_4.png",link:"#",soldout:true},
-
 {name:"YO MACHO Gym Shorts",price:5900,image:"image_5.png",link:"#",soldout:true},
-
 {name:"YO MACHO Lift Socks",price:1800,image:"image_6.png",link:"#",soldout:true},
-
 {name:"YO MACHO Pump Bottle",price:2400,image:"image_7.png",link:"#",soldout:true},
-
 {name:"YO MACHO Beast Bag",price:9800,image:"image_8.png",link:"#",soldout:true},
-
 {name:"YO MACHO Bulk Jacket",price:12800,image:"image_9.png",link:"#",soldout:true},
-
 {name:"YO MACHO Limited Black Tee",price:6800,image:"image_10.png",link:"#",soldout:true}
 
 ];
 
-const productContainer = document.querySelector(".products");
+const productContainer=document.querySelector(".products");
 
-productContainer.innerHTML = "";
+products.forEach(product=>{
+const item=document.createElement("div");
+item.className=product.soldout?"product soldout":"product";
 
-products.forEach(product => {
+item.innerHTML=`
+${product.soldout?`<div class="soldout-label">SOLD OUT</div>`:""}
+<img src="${product.image}">
+<div class="product-info">
+<b>${product.name}</b><br>
+¥${product.price.toLocaleString()}
+${product.soldout?`<button disabled>SOLD OUT</button>`:`<a href="${product.link}" target="_blank"><button>Buy on Amazon</button></a>`}
+</div>
+`;
 
-  const item = document.createElement("div");
-
-  item.className = product.soldout ? "product soldout" : "product";
-
-  item.innerHTML = `
-    ${product.soldout ? `<div class="soldout-label">SOLD OUT</div>` : ""}
-
-    <img src="${product.image}" alt="${product.name}">
-
-    <div class="product-info">
-      <b>${product.name}</b><br>
-      ¥${product.price.toLocaleString()}
-
-      ${
-        product.soldout
-        ? `<button disabled>SOLD OUT</button>`
-        : `<a href="${product.link}" target="_blank">
-            <button>Buy on Amazon</button>
-           </a>`
-      }
-    </div>
-  `;
-
-  productContainer.appendChild(item);
-
+productContainer.appendChild(item);
 });
 
 </script>
