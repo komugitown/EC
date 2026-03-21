@@ -5,20 +5,21 @@
 <title>YO MACHO Official</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- フォント -->
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 
 /* ===== 基本 ===== */
 
+:root{
+  --accent:#4fd1c5;
+}
+
 body{
   margin:0;
-  font-family:
-    "Hiragino Maru Gothic ProN",
-    "ヒラギノ丸ゴ ProN",
-    "Rounded Mplus 1c",
-    "M PLUS Rounded 1c",
-    "Arial Rounded MT Bold",
-    sans-serif;
-  background:linear-gradient(to bottom,#000 0%,#000 40%,#0a0a0a 70%,#111 100%);
+  font-family:'M PLUS Rounded 1c',sans-serif;
+  background:linear-gradient(to bottom,#111 0%,#1a1a1a 40%,#222 70%,#2a2a2a 100%);
   color:white;
   padding:20px;
 }
@@ -48,16 +49,20 @@ h1{
   font-size:28px;
 }
 
+h2{
+  font-weight:700;
+}
+
 /* ===== カード ===== */
 
 .card{
-  background:#1f1f1f;
+  background:#2a2a2a;
   padding:20px;
-  border-radius:15px;
+  border-radius:20px;
   margin-bottom:30px;
 }
 
-/* ===== キャラクター（縦リスト） ===== */
+/* ===== キャラクター ===== */
 
 .characters{
   display:flex;
@@ -70,21 +75,21 @@ h1{
   display:flex;
   gap:20px;
   align-items:center;
-  background:#1f1f1f;
+  background:#2a2a2a;
   padding:15px;
-  border-radius:15px;
+  border-radius:20px;
   transition:0.2s;
 }
 
 .character:hover{
-  transform:scale(1.02);
+  transform:translateY(-5px);
 }
 
 .character img{
   width:100px;
   height:100px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:15px;
   background:#111;
   flex-shrink:0;
 }
@@ -93,7 +98,7 @@ h1{
   flex:1;
 }
 
-/* ===== 商品グリッド ===== */
+/* ===== 商品 ===== */
 
 .products{
   display:grid;
@@ -102,15 +107,15 @@ h1{
 }
 
 .product{
-  background:#1f1f1f;
-  border-radius:15px;
+  background:#2a2a2a;
+  border-radius:20px;
   overflow:hidden;
   position:relative;
   transition:0.2s;
 }
 
 .product:hover{
-  transform:scale(1.05);
+  transform:translateY(-5px);
 }
 
 .product img{
@@ -130,43 +135,44 @@ h1{
   width:100%;
   padding:10px;
   border:none;
-  border-radius:10px;
-  background:black;
-  color:white;
+  border-radius:12px;
+  background:var(--accent);
+  color:#000;
   font-weight:bold;
   cursor:pointer;
+  transition:0.2s;
 }
 
 .product-info button:hover:not(:disabled){
-  opacity:0.7;
+  opacity:0.8;
+  transform:scale(1.03);
 }
 
 .product-info button:disabled{
-  background:#555;
+  background:#666;
+  color:#ccc;
   cursor:not-allowed;
 }
 
-/* SOLD OUTラベル */
+/* SOLD OUT */
 
 .soldout-label{
   position:absolute;
   top:10px;
   left:10px;
-  background:red;
+  background:#ff6b6b;
   padding:5px 10px;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
-  border-radius:6px;
-  transform:rotate(-15deg);
+  border-radius:8px;
+  transform:rotate(-10deg);
 }
-
-/* SOLD OUT時暗く */
 
 .product.soldout img{
   opacity:0.5;
 }
 
-/* ===== スマホ対応 ===== */
+/* ===== スマホ ===== */
 
 @media(max-width:600px){
 
@@ -179,11 +185,7 @@ h1{
     height:100px;
   }
 
-  /* キャラは横並びのまま */
   .character{
-    flex-direction:row;
-    text-align:left;
-    align-items:center;
     gap:15px;
   }
 
@@ -209,7 +211,6 @@ h1{
   </div>
 </header>
 
-
 <div class="card">
 <h2>Concept</h2>
 <p>
@@ -219,17 +220,13 @@ YO MACHOは努力に反応するブランド。<br>
 </p>
 </div>
 
-
 <h2>Characters</h2>
 <div class="characters"></div>
-
 
 <h2>Products</h2>
 <div class="products"></div>
 
-
 </div>
-
 
 <script>
 
@@ -237,77 +234,21 @@ YO MACHOは努力に反応するブランド。<br>
 
 const characters=[
 
-{
-name:"IRON PIT",
-image:"character_1.png",
-description:"鋼の精神を持つピットブル。不屈のパワーの象徴。"
-},
-
-{
-name:"MUSCLE BIRD",
-image:"character_2.png",
-description:"胸筋が膨らむ伝説のハト。努力に反応してパンプアップ。"
-},
-
-{
-name:"RUNNING CHEETAH",
-image:"character_3.png",
-description:"瞬発力の化身。スピードの極限体。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-},
-
-{
-name:"BULK BEAR",
-image:"character_4.png",
-description:"増量期の王者。プロテインを愛する森の支配者。"
-}
+{name:"IRON PIT",image:"character_1.png",description:"鋼の精神を持つピットブル。不屈のパワーの象徴。"},
+{name:"MUSCLE BIRD",image:"character_2.png",description:"胸筋が膨らむ伝説のハト。努力に反応してパンプアップ。"},
+{name:"RUNNING CHEETAH",image:"character_3.png",description:"瞬発力の化身。スピードの極限体。"},
+{name:"BULK BEAR",image:"character_4.png",description:"増量期の王者。プロテインを愛する森の支配者。"}
 
 ];
 
 const charContainer=document.querySelector(".characters");
 
 characters.forEach(char=>{
-
 const item=document.createElement("div");
 item.className="character";
 
 item.innerHTML=`
-<img src="${char.image}" alt="${char.name}" loading="lazy">
+<img src="${char.image}">
 <div class="character-info">
 <b>${char.name}</b><br>
 <span style="opacity:0.7;font-size:14px;">
@@ -317,52 +258,27 @@ ${char.description}
 `;
 
 charContainer.appendChild(item);
-
 });
-
 
 /* ===== 商品 ===== */
 
 const products=[
-
 {name:"YO MACHO Pigeon Tee",price:5200,image:"image_1.png",link:"#",soldout:false},
-
 {name:"YO MACHO Iron Hoodie",price:8200,image:"image_2.png",link:"#",soldout:true},
-
-{name:"YO MACHO Street Tank",price:4600,image:"image_3.png",link:"#",soldout:true},
-
-{name:"YO MACHO Power Cap",price:3500,image:"image_4.png",link:"#",soldout:true},
-
-{name:"YO MACHO Gym Shorts",price:5900,image:"image_5.png",link:"#",soldout:true},
-
-{name:"YO MACHO Lift Socks",price:1800,image:"image_6.png",link:"#",soldout:true},
-
-{name:"YO MACHO Pump Bottle",price:2400,image:"image_7.png",link:"#",soldout:true},
-
-{name:"YO MACHO Beast Bag",price:9800,image:"image_8.png",link:"#",soldout:true},
-
-{name:"YO MACHO Bulk Jacket",price:12800,image:"image_9.png",link:"#",soldout:true},
-
-{name:"YO MACHO Limited Black Tee",price:6800,image:"image_10.png",link:"#",soldout:true}
-
+{name:"YO MACHO Street Tank",price:4600,image:"image_3.png",link:"#",soldout:true}
 ];
 
 const productContainer = document.querySelector(".products");
 
-productContainer.innerHTML = ""; // ←重要：リセット
-
 products.forEach(product => {
 
   const item = document.createElement("div");
-
-  // soldoutなら最初からクラス付ける
   item.className = product.soldout ? "product soldout" : "product";
 
-  // innerHTMLで一括生成（確実）
   item.innerHTML = `
     ${product.soldout ? `<div class="soldout-label">SOLD OUT</div>` : ""}
 
-    <img src="${product.image}" alt="${product.name}">
+    <img src="${product.image}">
 
     <div class="product-info">
       <b>${product.name}</b><br>
@@ -372,7 +288,7 @@ products.forEach(product => {
         product.soldout
         ? `<button disabled>SOLD OUT</button>`
         : `<a href="${product.link}" target="_blank">
-            <button>Buy on Amazon</button>
+            <button>Buy</button>
            </a>`
       }
     </div>
